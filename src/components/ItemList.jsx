@@ -1,16 +1,16 @@
 import PropTypes from "prop-types";
-import { useContext, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Select from "react-select";
 import EmptyView from "./EmptyView";
-import { ItemsContext } from "../contexts/ItemsContextProvider";
+import { useItemsContext } from "../lib/hooks";
 
-ItemList.propTypes = {
+Item.propTypes = {
     items: PropTypes.array.isRequired,
     id: PropTypes.string.isRequired,
     item: PropTypes.string.isRequired,
     packedStatus: PropTypes.bool.isRequired,
-    handleDeleteItem: PropTypes.func.isRequired,
-    handleTogglePacked: PropTypes.func.isRequired,
+    onDeleteItem: PropTypes.func.isRequired,
+    onTogglePacked: PropTypes.func.isRequired,
 };
 
 const sortOptions = [
@@ -29,7 +29,7 @@ const sortOptions = [
 ];
 
 export default function ItemList() {
-    const {items, handleDeleteItem, handleTogglePacked} = useContext(ItemsContext);
+    const {items, handleDeleteItem, handleTogglePacked} = useItemsContext();
     const [sortBy, setSortBy] = useState("default");
 
     const sortedItems = useMemo(() => [...items].sort((a, b) => {
@@ -44,7 +44,7 @@ export default function ItemList() {
     }), [items, sortBy]);
 
     const selectStyles = {
-        control: (provided, state) => ({
+        control: (provided) => ({
             ...provided,
             backgroundColor: "##fff",
             // borderColor: !state.isFocused ? 'red' : provided.borderColor,

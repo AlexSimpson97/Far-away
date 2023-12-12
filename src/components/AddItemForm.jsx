@@ -1,11 +1,11 @@
-import { useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Button from "./Button";
-import { ItemsContext } from "../contexts/ItemsContextProvider";
+import { useItemsContext } from "../lib/hooks";
 
 export default function AddItemForm() {
-    const {handleAddNewItem:onAddNewItem} = useContext(ItemsContext);
+    const {handleAddNewItem:onAddNewItem} = useItemsContext();
     const [userText, setUserText] = useState(`Add an item`);
     const inputFieldRef = useRef();
 

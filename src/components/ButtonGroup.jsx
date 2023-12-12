@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import { ItemsContext } from "../contexts/ItemsContextProvider";
 import { btnProperties } from "../lib/constants";
 import Button from "./Button";
+import { useItemsContext } from "../lib/hooks";
 
 export default function ButtonGroup() {
-    const {handleMarkAllComplete, handleMarkAllIncomplete, handleResetToInitial, handleRemoveAllItems} = useContext(ItemsContext);
+    const {handleMarkAllComplete, handleMarkAllIncomplete, handleResetToInitial, handleRemoveAllItems} = useItemsContext();
     return (
         <div className="button-group">
             {btnProperties.map(({ btnText, type: btnType }) => {

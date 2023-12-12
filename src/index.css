@@ -396,3 +396,18 @@ footer {
     opacity: 0.5;
     margin-top: 1.2rem;
 }
+
+
+/* Add a media query for screens with a maximum width of 768px */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 6rem;
+        top: 10%;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+    }
+}
